@@ -1,12 +1,13 @@
-import pytest
-
-from tests.conftest import create_user
-from users.forms import UserCreateForm
+from tests.conftest import create_user, create_user_form
+from users.models import CustomUser
 
 
-def test_user_form(db):
-    data = {'username': 'test', 'email': 'test@mail.com', 'password': '11111111'}
-    form = UserCreateForm(data=data)
-    assert form.is_valid()
-    assert form.username == 'test'
-    assert form.email == 'test@mail.com'
+def test_user_form(create_user_form):
+    assert create_user_form.is_valid()
+
+
+def test_user_form_create(create_user_form):
+    create_user_form.save()
+    user = CustomUser.objects.get(pk=1)
+    assert user.username == 'test'
+    assert user.email == 'test@mail.com'
