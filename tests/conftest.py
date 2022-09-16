@@ -2,6 +2,10 @@ import pytest
 from users.models import CustomUser
 from users.forms import UserCreateForm
 from posts.models import Post
+from posts.forms import PostCreateForm
+
+
+RANGE_COUNT = 3
 
 
 @pytest.fixture
@@ -17,4 +21,9 @@ def create_user_form(db) -> UserCreateForm:
 @pytest.fixture
 def create_posts(create_user) -> None:
     [Post.objects.create(title=f'title {i}', content=f'test content {i}',
-                         published=True, user=create_user) for i in range(3)]
+                         published=True, user=create_user) for i in range(RANGE_COUNT)]
+
+
+@pytest.fixture
+def create_posts_form(create_user) -> list:
+    return [PostCreateForm(data={'title': f'title {i}', 'content': f'test content {i}', 'published': True, 'user': create_user}) for i in range(RANGE_COUNT)]
