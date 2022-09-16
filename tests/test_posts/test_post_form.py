@@ -1,5 +1,5 @@
 from tests.conftest import create_posts_form, RANGE_COUNT
-from posts.model import Post
+from posts.models import Post
 
 
 def test_create_posts(create_posts_form):
