@@ -1,4 +1,11 @@
 {% block header %}
+    <div>
+        {% if request.user.is_authenticated %}
+            <li> {{ user.username }} <a href="{% url 'logout' %}">Exit</a></li>
+        {% else %}
+            <li><a href="{% url 'login_user' %}">LogIn</a> | <a href="{% url 'register_user' %}">Registration</a></li>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block body %}
