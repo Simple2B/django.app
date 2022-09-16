@@ -1,8 +1,8 @@
-from tests.conftest import create_user
 from users.models import CustomUser
+from tests.conftest import create_user
 
 
-def create_user(create_user):
+def test_user(create_user):
     user = CustomUser.objects.get(pk=1)
-    assert user.name == 'test'
+    assert user.username == 'test'
     assert user.email == 'test@mail.com'
