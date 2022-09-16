@@ -1,0 +1,9 @@
+{% extends 'users/home.html' %}
+
+{% block content %}
+    {% csrf_token %}
+
+    {% for p in profiles %}
+        <p>{{ p }}</p>
+    {% endfor %}
+{% endblock %}

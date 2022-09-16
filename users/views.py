@@ -1,11 +1,12 @@
 from urllib import request
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
 
 from .forms import UserCreateForm, LoginUserForm
+from .models import CustomUser
 
 
 class RegisterUserView(CreateView):
@@ -32,7 +33,10 @@ def logout_user(request):
     return redirect('login_user')
 
 
-def home_page(request):
-    from django.shortcuts import render
+class UserListView(ListView):
+    model = CustomUser
+    template_name = 'users/profiles.html'
+    context_object_name = 'profiles'
 
-    return render(request, 'users/index.html')
+    def get_queryset(self):
+        return CustomUser.objects.filter(is_superuser=False)

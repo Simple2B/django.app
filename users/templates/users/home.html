@@ -3,6 +3,10 @@
 {% block body %}
     {% csrf_token %}
     {% if request.user.is_authenticated %}
-        HomePage
+        <h2>Homepage</h2>
+
+        {% block content %}
+        {% endblock %}
+
     {% endif %}
 {% endblock %}
