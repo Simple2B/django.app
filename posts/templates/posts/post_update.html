@@ -1,0 +1,12 @@
+{% extends 'users/home.html' %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update">
+        <a href="{% url 'posts_list' %}">Cancel</a>
+    </form>
+
+{% endblock %}

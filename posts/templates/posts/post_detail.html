@@ -9,6 +9,7 @@
     <p>Author: {{ post_detail.user }}</p>
 
     <a href="{% url 'delete_post' post_detail.id %}">Delete</a>
+    <a href="{% url 'update_post' post_detail.id %}">Update</a>
 
 
 {% endblock %}
