@@ -1,0 +1,12 @@
+{% extends 'users/home.html' %}
+
+{% block content %}
+
+    {% csrf_token %}
+    <h3>Posts list</h3>
+
+    {% for p in posts %}
+        <p>{{ p.title }}</p>
+    {% endfor %}
+
+{% endblock %}

@@ -17,7 +17,7 @@ class RegisterUserView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('home')
+        return redirect('posts_list')
 
 
 class LoginUserView(LoginView):
@@ -25,7 +25,7 @@ class LoginUserView(LoginView):
     template_name = 'users/login_page.html'
 
     def get_success_url(self) -> str:
-        return reverse_lazy('home')
+        return reverse_lazy('posts_list')
 
 
 def logout_user(request):

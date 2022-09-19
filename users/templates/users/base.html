@@ -1,6 +1,9 @@
 {% block header %}
     <div>
         {% if request.user.is_authenticated %}
+            <li><a href="{% url 'users_list' %}">users</a></li>
+            <li><a href="{% url 'posts_list' %}">posts</a></li>
+            <li><a href="{% url 'create_post' %}">create post</a></li>
             <li> {{ user.username }} <a href="{% url 'logout' %}">Exit</a></li>
         {% else %}
             <li><a href="{% url 'login_user' %}">LogIn</a> | <a href="{% url 'register_user' %}">Registration</a></li>

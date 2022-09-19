@@ -1,0 +1,14 @@
+{% extends 'users/home.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for p in form %}
+            <p><label for=" {{ p.id_for_label }} ">{{ p.label }}</label>{{ p }}</p>
+            <div>{{ p.errors }}</div>
+        {% endfor %}
+        <button type="submit">Post</button>
+    </form>
+
+
+{% endblock %}
