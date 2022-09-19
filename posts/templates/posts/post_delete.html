@@ -1,0 +1,12 @@
+{% extends 'users/home.html' %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure you want to delete "{{ object }}"?</p>
+        <input type="submit" value="Confirm">
+        <a href="{% url 'posts_list' %}">Cancel</a>
+    </form>
+
+{% endblock %}

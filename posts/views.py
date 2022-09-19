@@ -48,3 +48,9 @@ class PostDetailView(ListView):
 
     def get_queryset(self):
         return Post.objects.filter(pk=self.request.resolver_match.kwargs['pk']).first()
+
+
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'posts/post_delete.html'
+    success_url = reverse_lazy('posts_list')
