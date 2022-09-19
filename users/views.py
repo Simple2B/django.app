@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
 from django.contrib.auth import logout, login
 from django.contrib.auth.views import LoginView
+from django.db.models import Q
 
 from .forms import UserCreateForm, LoginUserForm
 from .models import CustomUser
@@ -39,4 +40,4 @@ class UserListView(ListView):
     context_object_name = 'profiles'
 
     def get_queryset(self):
-        return CustomUser.objects.filter(is_superuser=False)
+        return CustomUser.objects.filter(~Q(pk=self.request.user.pk), is_superuser=False)
