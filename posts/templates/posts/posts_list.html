@@ -6,7 +6,7 @@
     <h3>Posts list</h3>
 
     {% for p in posts %}
-        <p>{{ p.title }}</p>
+        <a href="{% url 'post_detail' pk=p.pk %}"><p>{{ p.title }}</p></a>
     {% endfor %}
 
 {% endblock %}

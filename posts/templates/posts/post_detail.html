@@ -1,0 +1,13 @@
+{% extends 'users/home.html' %}
+
+{% block content %}
+
+    {% csrf_token %}
+
+    <h4>{{ post_detail.title }}</h4>
+    <p>Content: {{ post_detail.content }}</p>
+    <p>Author: {{ post_detail.user }}</p>
+
+
+
+{% endblock %}

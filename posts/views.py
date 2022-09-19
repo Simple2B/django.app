@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, render
 
@@ -39,3 +39,12 @@ class PostListView(ListView):
         if not request.user.is_authenticated:
             return redirect('login_user')
         return render(request, 'posts/posts_list.html', context={'posts': self.get_queryset()})
+
+
+class PostDetailView(ListView):
+    model = Post
+    template_name = 'posts/post_detail.html'
+    context_object_name = 'post_detail'
+
+    def get_queryset(self):
+        return Post.objects.filter(pk=self.request.resolver_match.kwargs['pk']).first()
