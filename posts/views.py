@@ -36,9 +36,9 @@ class PostListView(ListView):
         return Post.objects.filter(published=True)
 
     def get(self, request):
-        if not request.user.is_authenticated:
+        if not self.request.user.is_authenticated:
             return redirect('login_user')
-        return render(request, 'posts/posts_list.html', context={'posts': self.get_queryset()})
+        return render(self.request, 'posts/posts_list.html', context={'posts': self.get_queryset()})
 
 
 class PostDetailView(ListView):
