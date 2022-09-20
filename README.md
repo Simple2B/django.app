@@ -1,8 +1,8 @@
 # Creating environment
 
 ```
-git clone https://github.com/Simple2B/django.rest.app.git
-cd django.rest.app
+git clone https://github.com/Simple2B/django.app.git
+cd django.app
 poetry install
 ```
 
