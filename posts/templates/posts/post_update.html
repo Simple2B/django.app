@@ -5,8 +5,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Update">
-        <a href="{% url 'posts_list' %}">Cancel</a>
+        <input type="submit" value="Update" class="btn btn-primary">
+        <a href="{% url 'posts_list' %}" class="btn btn-primary">Cancel</a>
     </form>
-
 {% endblock %}

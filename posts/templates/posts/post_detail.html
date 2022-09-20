@@ -8,8 +8,8 @@
     <p>Content: {{ post_detail.content }}</p>
     <p>Author: {{ post_detail.user }}</p>
 
-    <a href="{% url 'delete_post' post_detail.id %}">Delete</a>
-    <a href="{% url 'update_post' post_detail.id %}">Update</a>
-
+    <a href="{% url 'delete_post' post_detail.id %}" class="btn btn-primary">Delete</a>
+    <a href="{% url 'update_post' post_detail.id %}" class="btn btn-primary">Update</a>
+    
 
 {% endblock %}

@@ -3,10 +3,10 @@
 {% block content %}
 
     {% csrf_token %}
-    <h3>Posts list</h3>
-
-    {% for p in posts %}
-        <a href="{% url 'post_detail' pk=p.pk %}"><p>{{ p.title }}</p></a>
-    {% endfor %}
+    <ul class="list-group list-group-flush">
+        {% for p in posts %}
+            <li class="list-group-item"><a href="{% url 'post_detail' pk=p.pk %}"><p>{{ p.title }}</p></a></li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}

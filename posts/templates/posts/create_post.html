@@ -3,12 +3,18 @@
 {% block content %}
     <form action="" method="post">
         {% csrf_token %}
-        {% for p in form %}
-            <p><label for=" {{ p.id_for_label }} ">{{ p.label }}</label>{{ p }}</p>
-            <div>{{ p.errors }}</div>
-        {% endfor %}
-        <button type="submit">Post</button>
+            {% for p in form %}
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label class="col-form-label" for=" {{ p.id_for_label }} ">{{ p.label }}</label>
+                    </div>
+                    <div class="col-auto">
+                        {{ p }}
+                    </div>
+                    <div>{{ p.errors }}</div>
+                </div>
+            {% endfor %}
+        
+        <button type="submit" class="btn btn-primary">Create post</button>
     </form>
-
-
 {% endblock %}
