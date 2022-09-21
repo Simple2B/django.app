@@ -25,5 +25,5 @@ def post_login_fail(sender, credentials, request, **kwargs):
 
 
 @receiver(post_save, sender=CustomUser)
-def post_save(sender, instance, **kwargs):
-    logger.info(f'{instance} created')
+def register(sender, instance, **kwargs):
+    logger.info(f'{instance} saved')
