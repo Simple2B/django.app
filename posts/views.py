@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render
 from .forms import PostCreateForm
 from .models import Post
 from users.models import CustomUser
+from .logger import *
 
 
 class CreatePost(CreateView):

@@ -8,7 +8,7 @@ from django.db.models import Q
 
 from .forms import UserCreateForm, LoginUserForm
 from .models import CustomUser
-from .signals import *
+from .logger import *
 
 
 class RegisterUserView(CreateView):
