@@ -114,14 +114,14 @@ LOGGING = {
 #     }
 # }
 
-if os.environ['DJANGO_ENV'] == 'development':
+if os.environ.get('DJANGO_ENV') == 'development':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-elif os.environ['DJANGO_ENV'] == 'production':
+elif os.environ.get('DJANGO_ENV') == 'production':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
