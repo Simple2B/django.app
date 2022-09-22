@@ -9,5 +9,6 @@ poetry install
 # Launch an run application locally
 
 ```
+python manage.py migrate
 python manage.py runserver
 ```

@@ -4,11 +4,12 @@ version = "0.1.0"
 description = ""
 authors = ["EvgeniiShcherbina <eugene@inkit.com>"]
 readme = "README.md"
-packages = [{include = "django_app"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 Django = "^4.1.1"
+python-decouple = "^3.6"
+psycopg2-binary = "^2.9.3"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^5.0.4"
