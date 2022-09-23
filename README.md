@@ -21,3 +21,10 @@ python manage.py runserver
 ```
 docker compose up app
 ```
+
+# Before deploy on heroku
+
+```
+remove unrequired hosts from settings.py and append required one
+if you aren`t going to use heroku remove 'Procfile', 'requirements.txt', 'runtime.txt'
+```
