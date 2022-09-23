@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 from decouple import config
 
@@ -22,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-nh2e%_&3uke*&$@n5dcf*=rg_wm8(@7(!!q9#7(wtv@y9zuy&c"
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -123,16 +124,18 @@ if config('DJANGO_ENV') == 'development':
         }
     }
 elif config('DJANGO_ENV') == 'production':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('POSTGRES_DB'),
-            'USER': config('POSTGRES_USER'),
-            'PASSWORD': config('POSTGRES_PASSWORD'),
-            'HOST': 'db',
-            'PORT': int(config('LOCAL_DB_PORT')),
-        }
-    }
+    # DATABASES = {
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.postgresql',
+    #         'NAME': config('POSTGRES_DB'),
+    #         'USER': config('POSTGRES_USER'),
+    #         'PASSWORD': config('POSTGRES_PASSWORD'),
+    #         'HOST': 'db',
+    #         'PORT': int(config('LOCAL_DB_PORT')),
+    #     }
+    # }
+    DATABASES = {'default': dj_database_url.config(
+        conn_max_age=600, ssl_require=True)}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
