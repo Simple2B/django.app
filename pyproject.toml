@@ -10,6 +10,7 @@ python = "^3.9"
 Django = "^4.1.1"
 python-decouple = "^3.6"
 psycopg2-binary = "^2.9.3"
+whitenoise = "^6.2.0"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^5.0.4"
