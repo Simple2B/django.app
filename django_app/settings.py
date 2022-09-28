@@ -124,16 +124,16 @@ if config('DJANGO_ENV') == 'development':
         }
     }
 elif config('DJANGO_ENV') == 'production':
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.postgresql',
-    #         'NAME': config('POSTGRES_DB'),
-    #         'USER': config('POSTGRES_USER'),
-    #         'PASSWORD': config('POSTGRES_PASSWORD'),
-    #         'HOST': 'db',
-    #         'PORT': int(config('LOCAL_DB_PORT')),
-    #     }
-    # }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config('POSTGRES_DB'),
+            'USER': config('POSTGRES_USER'),
+            'PASSWORD': config('POSTGRES_PASSWORD'),
+            'HOST': 'db',
+            'PORT': int(config('LOCAL_DB_PORT')),
+        }
+    }
     DATABASES = {'default': dj_database_url.config(
         conn_max_age=600, ssl_require=True)}
 
