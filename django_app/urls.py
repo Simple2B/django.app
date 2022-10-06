@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from posts.views import PostListView
-from .views import home_page
+from .views import home_page, worker
 
 
 urlpatterns = [
@@ -24,4 +24,5 @@ urlpatterns = [
     path("", home_page),
     path("users/", include("users.urls")),
     path("posts/", include("posts.urls")),
+    path("worker/", worker),
 ]
