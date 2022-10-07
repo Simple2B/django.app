@@ -3,12 +3,14 @@ version: "3.8"
 services:
   redis:
     image: redis
+    restart: always
     ports:
       - 127.0.0.1:${REDIS_PORT-6000}:6379
 
   worker:
     container_name: "celery_worker"
     build: .
+    restart: always
     env_file:
       - .env
     command: celery -A django_app.worker worker --loglevel=INFO
@@ -17,7 +19,7 @@ services:
 
   db:
     image: postgres:12
-    restart: unless-stopped
+    restart: always
     volumes:
       - db_data:/var/lib/postgresql/data
     environment:
@@ -33,7 +35,7 @@ services:
   app:
     container_name: "app"
     build: .
-    restart: unless-stopped
+    restart: always
     entrypoint: bash ./start_server.sh
     env_file:
       - .env
